@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mobanker.config.service.dao.SystemServerIpDao">
-	<resultMap id="getMap" type="com.mobanker.config.service.entity.SystemServerIp" />
-	<parameterMap type="com.mobanker.config.service.entity.SystemServerIp" id="putMap" />
+<mapper namespace="com.mobanker.config.serivce.dao.SystemServerIpDao">
+	<resultMap id="getMap" type="com.mobanker.config.api.entity.SystemServerIp" />
+	<parameterMap type="com.mobanker.config.api.entity.SystemServerIp" id="putMap" />
 	<select id="getSystemServerIpByCondition" parameterMap="putMap" resultMap="getMap">
 		SELECT T.* FROM t_system_server_ip T WHERE 1 = 1
 		<include refid="condition"></include>

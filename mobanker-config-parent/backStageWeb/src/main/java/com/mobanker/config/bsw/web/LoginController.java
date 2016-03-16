@@ -1,9 +1,9 @@
 package com.mobanker.config.bsw.web;
 
-import com.mobanker.config.service.constants.CommonConstants;
-import com.mobanker.config.service.entity.Menus;
-import com.mobanker.config.service.manager.MenusManager;
-import com.mobanker.config.service.utils.ValidateUtil;
+import com.mobanker.config.api.constants.CommonConstants;
+import com.mobanker.config.api.entity.Menus;
+import com.mobanker.config.api.manager.MenusManager;
+import com.mobanker.config.api.utils.ValidateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

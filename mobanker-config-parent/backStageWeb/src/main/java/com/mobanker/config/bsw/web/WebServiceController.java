@@ -6,10 +6,10 @@
 package com.mobanker.config.bsw.web;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mobanker.config.service.constants.ExceptionConstants;
-import com.mobanker.config.service.exception.CommonException;
-import com.mobanker.config.service.manager.WebServiceManager;
-import com.mobanker.config.service.utils.ValidateUtil;
+import com.mobanker.config.api.constants.ExceptionConstants;
+import com.mobanker.config.api.exception.CommonException;
+import com.mobanker.config.api.manager.WebServiceManager;
+import com.mobanker.config.api.utils.ValidateUtil;
 import com.mobanker.framework.constant.Constants;
 import com.mobanker.framework.dto.ResponseEntity;
 import org.slf4j.Logger;

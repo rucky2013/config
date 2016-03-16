@@ -82,7 +82,7 @@
 		</property>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.mobanker.config.service.dao,com.mobanker.config.**.dao,com.mobanker.framework.biz.dao" />
+		<property name="basePackage" value="com.mobanker.config.api.dao,com.mobanker.config.**.dao,com.mobanker.framework.biz.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -103,4 +103,6 @@
 	</bean>
 
 	<import resource="classpath:/spring/applicationContext-framework.xml" />
+	<!--暂时使用容器的方式启动，建议通过com.alibaba.dubbo.container.Main main函数启动 -->
+	<import resource="classpath:/META-INF/spring/applicationContext-dubbo.xml" />
 </beans>

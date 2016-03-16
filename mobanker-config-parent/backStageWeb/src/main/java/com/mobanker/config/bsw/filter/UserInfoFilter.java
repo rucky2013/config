@@ -1,8 +1,8 @@
 package com.mobanker.config.bsw.filter;
 
 import com.mobanker.config.bsw.constant.ConstantsBSW;
-import com.mobanker.config.service.entity.Menus;
-import com.mobanker.config.service.entity.User;
+import com.mobanker.config.api.entity.Menus;
+import com.mobanker.config.api.entity.User;
 import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.*;

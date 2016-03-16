@@ -1,14 +1,14 @@
 package com.mobanker.config.bsw.web;
 
 import com.alibaba.fastjson.JSONObject;
-import com.mobanker.config.service.constants.ExceptionConstants;
-import com.mobanker.config.service.dto.PageInfo;
-import com.mobanker.config.service.dto.Pagenation;
-import com.mobanker.config.service.entity.SystemServerIp;
-import com.mobanker.config.service.exception.CommonException;
-import com.mobanker.config.service.manager.SystemServerIpDownLogManager;
-import com.mobanker.config.service.manager.SystemServerIpManager;
-import com.mobanker.config.service.utils.NetworkUtil;
+import com.mobanker.config.api.constants.ExceptionConstants;
+import com.mobanker.config.api.dto.PageInfo;
+import com.mobanker.config.api.dto.Pagenation;
+import com.mobanker.config.api.entity.SystemServerIp;
+import com.mobanker.config.api.exception.CommonException;
+import com.mobanker.config.api.manager.SystemServerIpDownLogManager;
+import com.mobanker.config.api.manager.SystemServerIpManager;
+import com.mobanker.config.api.utils.NetworkUtil;
 import com.mobanker.framework.constant.Constants;
 import com.mobanker.framework.dto.ResponseEntity;
 import org.slf4j.Logger;
