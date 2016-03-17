@@ -7,7 +7,7 @@ package com.mobanker.config.manager.manager.impl;
 
 import com.mobanker.config.api.entity.Menus;
 import com.mobanker.config.api.manager.MenusManager;
-import com.mobanker.config.manager.service.MenusService;
+import com.mobanker.config.service.service.MenusService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
