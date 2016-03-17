@@ -1,4 +1,4 @@
-package com.mobanker.config.serivce.manager.impl;
+package com.mobanker.config.manager.manager.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mobanker.common.utils.HttpClientUtils;
@@ -12,9 +12,9 @@ import com.mobanker.config.api.entity.SystemServerIp;
 import com.mobanker.config.api.entity.SystemServerIpDownLog;
 import com.mobanker.config.api.exception.CommonException;
 import com.mobanker.config.api.manager.SystemServerIpManager;
-import com.mobanker.config.serivce.service.ActiveSystemVariableService;
-import com.mobanker.config.serivce.service.SystemServerIpDownLogService;
-import com.mobanker.config.serivce.service.SystemServerIpService;
+import com.mobanker.config.manager.service.ActiveSystemVariableService;
+import com.mobanker.config.manager.service.SystemServerIpDownLogService;
+import com.mobanker.config.manager.service.SystemServerIpService;
 import com.mobanker.config.api.utils.ValidateUtil;
 import com.mobanker.framework.constant.Constants;
 import org.slf4j.Logger;

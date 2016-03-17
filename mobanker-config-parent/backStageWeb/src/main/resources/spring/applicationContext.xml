@@ -104,5 +104,5 @@
 
 	<import resource="classpath:/spring/applicationContext-framework.xml" />
 	<!--暂时使用容器的方式启动，建议通过com.alibaba.dubbo.container.Main main函数启动 -->
-	<import resource="classpath:/META-INF/spring/applicationContext-dubbo.xml" />
+	<!--<import resource="classpath:/META-INF/spring/applicationContext-dubbo.xml" />-->
 </beans>

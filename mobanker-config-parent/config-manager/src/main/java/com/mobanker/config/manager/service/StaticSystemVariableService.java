@@ -3,7 +3,7 @@
  * All right reserved.
  */
 
-package com.mobanker.config.serivce.service;
+package com.mobanker.config.manager.service;
 
 import com.mobanker.config.api.dto.PageInfo;
 import com.mobanker.config.api.dto.Pagenation;
@@ -53,5 +53,4 @@ public interface StaticSystemVariableService extends BaseService<StaticSystemVar
 	 * @param staticSystemVariable
 	 */
 	void updateByModuleStatus(StaticSystemVariable staticSystemVariable);
-
 }

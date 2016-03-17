@@ -3,7 +3,7 @@
  * All right reserved.
  */
 
-package com.mobanker.config.serivce.manager.impl;
+package com.mobanker.config.manager.manager.impl;
 
 import com.mobanker.config.api.constants.ExceptionConstants;
 import com.mobanker.config.api.constants.enums.DataStatus;
@@ -17,9 +17,9 @@ import com.mobanker.config.api.entity.SystemModule;
 import com.mobanker.config.api.exception.CommonException;
 import com.mobanker.config.api.manager.SystemModuleManager;
 import com.mobanker.config.api.manager.ZkDataPushManager;
-import com.mobanker.config.serivce.service.ActiveSystemVariableService;
-import com.mobanker.config.serivce.service.StaticSystemVariableService;
-import com.mobanker.config.serivce.service.SystemModuleService;
+import com.mobanker.config.manager.service.ActiveSystemVariableService;
+import com.mobanker.config.manager.service.StaticSystemVariableService;
+import com.mobanker.config.manager.service.SystemModuleService;
 import com.mobanker.config.api.utils.SystemUtils;
 import com.mobanker.config.api.utils.ValidateUtil;
 import com.mobanker.framework.dto.ResponseEntity;

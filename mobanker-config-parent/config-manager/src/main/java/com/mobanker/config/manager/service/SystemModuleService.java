@@ -3,7 +3,9 @@
  * All right reserved.
  */
 
-package com.mobanker.config.serivce.service;
+package com.mobanker.config.manager.service;
+
+import java.util.List;
 
 import com.mobanker.config.api.constants.enums.ModuleStatus;
 import com.mobanker.config.api.dto.PageInfo;
@@ -12,8 +14,6 @@ import com.mobanker.config.api.dto.SystemModuleDto;
 import com.mobanker.config.api.entity.SystemModule;
 import com.mobanker.framework.dto.ResponseEntity;
 import com.mobanker.framework.service.BaseService;
-
-import java.util.List;
 
 /**
  * 

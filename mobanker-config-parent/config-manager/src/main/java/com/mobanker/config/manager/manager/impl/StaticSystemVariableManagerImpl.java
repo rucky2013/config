@@ -3,7 +3,7 @@
  * All right reserved.
  */
 
-package com.mobanker.config.serivce.manager.impl;
+package com.mobanker.config.manager.manager.impl;
 
 import com.mobanker.config.api.constants.ExceptionConstants;
 import com.mobanker.config.api.constants.enums.DataStatus;
@@ -15,17 +15,22 @@ import com.mobanker.config.api.entity.SystemModule;
 import com.mobanker.config.api.exception.CommonException;
 import com.mobanker.config.api.manager.StaticSystemVariableManager;
 import com.mobanker.config.api.manager.ZkDataPushManager;
-import com.mobanker.config.serivce.service.StaticSystemVariableService;
-import com.mobanker.config.serivce.service.SystemModuleService;
 import com.mobanker.config.api.utils.SystemUtils;
 import com.mobanker.config.api.utils.ValidateUtil;
 import com.mobanker.config.api.utils.VariableTransformUtils;
+import com.mobanker.config.manager.service.StaticSystemVariableService;
+import com.mobanker.config.manager.service.SystemModuleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,6 +48,7 @@ import java.util.Map;
 
 @Service
 @Transactional(readOnly = true)
+@Path("staticSystem")
 public class StaticSystemVariableManagerImpl implements StaticSystemVariableManager {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(StaticSystemVariableManagerImpl.class);
@@ -191,7 +197,10 @@ public class StaticSystemVariableManagerImpl implements StaticSystemVariableMana
 	}
 
 	@Override
-	public Map<String, Object> getStaticSystemVariableBySystemName(String systemName) {
+	@GET
+	@Path("getSystem")
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Map<String, Object> getStaticSystemVariableBySystemName(@PathParam("systemName")String systemName) {
 		StaticSystemVariable staticSystemVariable = new StaticSystemVariable();
 		staticSystemVariable.setSystemName(systemName);
 		staticSystemVariable.setStatus(DataStatus.NORMAL);

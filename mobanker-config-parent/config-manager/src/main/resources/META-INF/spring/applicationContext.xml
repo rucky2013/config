@@ -15,7 +15,7 @@
 	<aop:aspectj-autoproxy />
 	<context:annotation-config />
 	<!-- 启动包扫描功能，以便注册带有@Controller、@Service、@repository、@Component等注解的类成为spring的bean -->
-	<context:component-scan base-package="com.mobanker.config.serivce"/>
+	<context:component-scan base-package="com.mobanker.config.manager"/>
 
 	<bean class="com.mobanker.framework.spring.property.PropertyPlaceholderConfigurer">
 		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />

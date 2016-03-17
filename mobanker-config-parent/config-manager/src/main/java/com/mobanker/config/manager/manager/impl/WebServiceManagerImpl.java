@@ -3,7 +3,7 @@
  * All right reserved.
  */
 
-package com.mobanker.config.serivce.manager.impl;
+package com.mobanker.config.manager.manager.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mobanker.common.utils.HttpClientUtils;

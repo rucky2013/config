@@ -1,4 +1,4 @@
-package com.mobanker.config.serivce.zookeeperScheme.util;
+package com.mobanker.config.manager.zookeeperScheme.util;
 
 import org.apache.curator.utils.ZKPaths;
 

@@ -21,6 +21,7 @@
 		<module>zookeeperConfig</module>
 		<module>config-api</module>
 		<module>config-service</module>
+		<module>config-manager</module>
 	</modules>
 
 	<build>

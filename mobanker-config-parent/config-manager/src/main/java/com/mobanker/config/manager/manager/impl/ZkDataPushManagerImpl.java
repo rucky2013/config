@@ -1,4 +1,4 @@
-package com.mobanker.config.serivce.manager.impl;
+package com.mobanker.config.manager.manager.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.mobanker.config.api.constants.ExceptionConstants;
@@ -13,10 +13,10 @@ import com.mobanker.config.api.exception.CommonException;
 import com.mobanker.config.api.manager.ActiveSystemVariableManager;
 import com.mobanker.config.api.manager.StaticSystemVariableManager;
 import com.mobanker.config.api.manager.ZkDataPushManager;
-import com.mobanker.config.serivce.service.SystemModuleService;
+import com.mobanker.config.manager.service.SystemModuleService;
+import com.mobanker.config.manager.zookeeperScheme.factory.ZookeeperFactory;
+import com.mobanker.config.manager.zookeeperScheme.template.TreeCacheTemplate;
 import com.mobanker.config.api.utils.ValidateUtil;
-import com.mobanker.config.serivce.zookeeperScheme.factory.ZookeeperFactory;
-import com.mobanker.config.serivce.zookeeperScheme.template.TreeCacheTemplate;
 import org.apache.curator.framework.CuratorFramework;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
