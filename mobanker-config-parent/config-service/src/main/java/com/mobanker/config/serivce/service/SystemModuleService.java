@@ -119,4 +119,6 @@ public interface SystemModuleService extends BaseService<SystemModule> {
 	 * @date 2016年3月1日 上午9:47:11
 	 */
 	List<String> getAllSystemNameNotModuleStatus(ModuleStatus moduleStatus);
+
+	String getTestString();
 }

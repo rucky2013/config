@@ -26,10 +26,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -198,9 +198,10 @@ public class StaticSystemVariableManagerImpl implements StaticSystemVariableMana
 
 	@Override
 	@GET
-	@Path("getSystem")
-	@Consumes({MediaType.APPLICATION_JSON})
-	public Map<String, Object> getStaticSystemVariableBySystemName(@PathParam("systemName")String systemName) {
+	@Path("getSystem/{systemName}")
+	@Produces({MediaType.APPLICATION_JSON})
+//	@Produces({"*/*"})
+	public Map<String, Object> getStaticSystemVariableBySystemName(@PathParam("systemName") String systemName) {
 		StaticSystemVariable staticSystemVariable = new StaticSystemVariable();
 		staticSystemVariable.setSystemName(systemName);
 		staticSystemVariable.setStatus(DataStatus.NORMAL);

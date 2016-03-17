@@ -5,27 +5,29 @@
 
 package com.mobanker.config.serivce.service.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import com.mobanker.config.serivce.service.SystemModuleService;
-import org.springframework.stereotype.Service;
-
 import com.github.pagehelper.PageHelper;
 import com.mobanker.config.api.constants.ExceptionConstants;
 import com.mobanker.config.api.constants.enums.DataStatus;
 import com.mobanker.config.api.constants.enums.ModuleStatus;
-import com.mobanker.config.serivce.dao.SystemModuleDao;
 import com.mobanker.config.api.dto.PageInfo;
 import com.mobanker.config.api.dto.Pagenation;
 import com.mobanker.config.api.dto.SystemModuleDto;
 import com.mobanker.config.api.entity.SystemModule;
 import com.mobanker.config.api.exception.CommonException;
 import com.mobanker.config.api.utils.ValidateUtil;
+import com.mobanker.config.serivce.dao.SystemModuleDao;
+import com.mobanker.config.serivce.service.SystemModuleService;
 import com.mobanker.framework.constant.Constants;
 import com.mobanker.framework.dto.ResponseEntity;
 import com.mobanker.framework.service.impl.BaseServiceImpl;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * 
@@ -37,6 +39,7 @@ import com.mobanker.framework.service.impl.BaseServiceImpl;
  * @date 2016年1月20日 下午4:06:30
  */
 @Service
+@Path("systemModule")
 public class SystemModuleServiceImpl extends BaseServiceImpl<SystemModule> implements SystemModuleService {
 
 	@Resource
@@ -104,6 +107,7 @@ public class SystemModuleServiceImpl extends BaseServiceImpl<SystemModule> imple
 		}
 	}
 
+
 	public List<String> getSystemName() {
 		List<String> list = systemModuleDao.getSystemName();
 		for (int i = 0; i < list.size(); i++) {
@@ -119,6 +123,10 @@ public class SystemModuleServiceImpl extends BaseServiceImpl<SystemModule> imple
 	}
 
 	@Override
+	@GET
+	@Path("getAllSystemName")
+	@Produces({MediaType.APPLICATION_JSON})
+//	@Produces({"*/*"})
 	public List<String> getAllSystemName() {
 		List<String> list = systemModuleDao.getAllSystemName();
 		for (int i = 0; i < list.size(); i++) {
@@ -153,5 +161,13 @@ public class SystemModuleServiceImpl extends BaseServiceImpl<SystemModule> imple
 			}
 		}
 		return list;
+	}
+
+	@Override
+	@GET
+	@Path("getTest")
+	@Produces({"*/*"})
+	public String getTestString() {
+		return "test success";
 	}
 }
