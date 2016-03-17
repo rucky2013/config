@@ -141,22 +141,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>tomcat</groupId>-->
-			<!--<artifactId>catalina</artifactId>-->
-			<!--<version>5.5.23</version>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>org.apache.tomcat</groupId>-->
-			<!--<artifactId>catalina</artifactId>-->
-			<!--<version>6.0.45</version>-->
-			<!--<exclusions>-->
-				<!--<exclusion>-->
-					<!--<groupId>javax.servlet</groupId>-->
-					<!--<artifactId>javax.servlet-api</artifactId>-->
-				<!--</exclusion>-->
-			<!--</exclusions>-->
-		<!--</dependency>-->
+		<!-- rest风格下各个容器需要的依赖 -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-catalina</artifactId>
@@ -186,6 +171,7 @@
 			<version>3.0.5.Final</version>
 		</dependency>
 
+		<!-- json 解析 -->
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson-provider</artifactId>
