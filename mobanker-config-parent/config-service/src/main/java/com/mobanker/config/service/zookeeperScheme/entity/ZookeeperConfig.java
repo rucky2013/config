@@ -2,7 +2,6 @@ package com.mobanker.config.service.zookeeperScheme.entity;
 
 
 import com.mobanker.config.service.zookeeperScheme.constants.ZookeeperConstants;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -21,10 +20,8 @@ import java.util.Properties;
  * Author : cailinfeng
  * Date : 2016/1/18
  */
-@Data
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-@SuppressWarnings("all")
 public class ZookeeperConfig implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -36,6 +33,38 @@ public class ZookeeperConfig implements Serializable {
     private String staticConfigPath ;
 
     private String dynamicConfigPath ;
+
+    public String getConnection() {
+        return connection;
+    }
+
+    public void setConnection(String connection) {
+        this.connection = connection;
+    }
+
+    public String getDynamicConfigPath() {
+        return dynamicConfigPath;
+    }
+
+    public void setDynamicConfigPath(String dynamicConfigPath) {
+        this.dynamicConfigPath = dynamicConfigPath;
+    }
+
+    public String getNameSpace() {
+        return nameSpace;
+    }
+
+    public void setNameSpace(String nameSpace) {
+        this.nameSpace = nameSpace;
+    }
+
+    public String getStaticConfigPath() {
+        return staticConfigPath;
+    }
+
+    public void setStaticConfigPath(String staticConfigPath) {
+        this.staticConfigPath = staticConfigPath;
+    }
 
     /**
      * 方法 setZookeeperConfig 功能描述 ：通过反射、根据application.properties中读取到的
@@ -94,4 +123,6 @@ public class ZookeeperConfig implements Serializable {
         }
         return zookeeperConfig;
     }
+
+
 }

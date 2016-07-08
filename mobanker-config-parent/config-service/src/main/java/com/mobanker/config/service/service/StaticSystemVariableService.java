@@ -54,4 +54,8 @@ public interface StaticSystemVariableService extends BaseService<StaticSystemVar
 	 */
 	void updateByModuleStatus(StaticSystemVariable staticSystemVariable);
 
+	String getStaticStringForDubboTest();
+
+	List<StaticSystemVariable> getDbDataForDubboTest();
+
 }

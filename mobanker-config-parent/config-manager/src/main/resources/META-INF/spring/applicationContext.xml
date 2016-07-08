@@ -103,5 +103,5 @@
 	</bean>
 
 	<!--通过com.alibaba.dubbo.container.Main main函数启动 -->
-	<!--<import resource="classpath:/spring/applicationContext-dubbo.xml" />-->
+	<import resource="classpath:/spring/applicationContext-dubbo.xml" />
 </beans>

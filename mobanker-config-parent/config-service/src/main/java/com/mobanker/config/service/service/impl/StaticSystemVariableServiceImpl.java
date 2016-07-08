@@ -6,6 +6,7 @@
 package com.mobanker.config.service.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.mobanker.config.api.constants.enums.DataStatus;
 import com.mobanker.config.service.dao.StaticSystemVariableDao;
 import com.mobanker.config.api.dto.PageInfo;
 import com.mobanker.config.api.dto.Pagenation;
@@ -16,6 +17,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -29,6 +34,7 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
+@Path("static")
 public class StaticSystemVariableServiceImpl extends BaseServiceImpl<StaticSystemVariable> implements StaticSystemVariableService {
 
 	@Resource
@@ -55,5 +61,28 @@ public class StaticSystemVariableServiceImpl extends BaseServiceImpl<StaticSyste
 	@Override
 	public void updateByModuleStatus(StaticSystemVariable staticSystemVariable) {
 		staticSystemVariableDao.updateByModuleStatus(staticSystemVariable);		
+	}
+
+	@Override
+	public String getStaticStringForDubboTest() {
+		return "dubbo execute without mysql access!";
+	}
+
+	@Override
+	@GET
+	@Path("getDbDataForDubboTest")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<StaticSystemVariable> getDbDataForDubboTest() {
+		List result = null;
+		try {
+			result = staticSystemVariableDao.getAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		StaticSystemVariable staticSystemVariable = new StaticSystemVariable();
+		staticSystemVariable.setSystemName("test11");
+		staticSystemVariable.setStatus(DataStatus.NORMAL);
+		List<StaticSystemVariable> staticSystemVariables = staticSystemVariableDao.getStaticSystemVariableBySystemNameAndStatus(staticSystemVariable);
+		return staticSystemVariables;
 	}
 }
