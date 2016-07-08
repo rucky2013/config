@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+
+	<context:component-scan base-package="com.lynn.config.bsw.web" name-generator="com.lynn.framework.spring.mvc.FullPackageBeanNameGenerator" />
+	<!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射 -->
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg name="defaultCharset" value="UTF-8"></constructor-arg>
+			</bean>
+			<bean class="com.lynn.framework.convert.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=UTF-8</value>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+				<property name="features">
+					<array value-type="com.alibaba.fastjson.serializer.SerializerFeature">
+						<value>PrettyFormat</value>
+						<value>WriteDateUseDateFormat</value>
+					</array>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="com.lynn.framework.convert.String2DateConverter" />
+				<bean class="com.lynn.framework.convert.Date2StringConverter" />
+			</set>
+		</property>
+	</bean>
+
+	<!--<mvc:resources location="/static/" mapping="/static/**" />
+		该种方式处理静态资源有bug，故采用default-servlet-handler
+	-->
+	<mvc:default-servlet-handler/>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="order" value="1" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
+	</bean>
+
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name='requestMappingHandlerMapping' class='com.lynn.framework.spring.mvc.PackageURLRequestMappingHandlerMapping'>
+		<property name='packageBase' value='com.lynn.config.bsw.web'></property>
+	</bean>
+	<import resource="classpath:/spring/applicationContext.xml" />
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lynn.config.service.dao.MenusDao">
+	<resultMap id="getMap" type="com.lynn.config.api.entity.Menus">
+	</resultMap>
+	<select id="getMenusByParentMenuId" resultMap="getMap" parameterType="java.util.HashMap">
+		select *
+		from T_MENUS m
+		where 1=1
+		and m.PARENT_MENU_ID = #{menuId}
+		order by m.order_num
+	</select>
+
+	<select id="getTopMenu" parameterType="com.lynn.config.api.entity.Menus" resultMap="getMap">
+		select * from t_menus where
+		parent_menu_id = 0
+		<if test="status != null and status != ''">
+			AND STATUS = #{status}
+		</if>
+		  order by order_num
+	</select>
+	
+</mapper>

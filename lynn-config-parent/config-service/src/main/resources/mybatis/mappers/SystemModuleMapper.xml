@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lynn.config.service.dao.SystemModuleDao">
+	<resultMap id="getMap" type="com.lynn.config.api.entity.SystemModule" />
+	<resultMap id="getMapDto" type="com.lynn.config.api.dto.SystemModuleDto" />
+	<parameterMap id="putMap" type="com.lynn.config.api.entity.SystemModule" />
+	<parameterMap id="putMapDto" type="com.lynn.config.api.dto.SystemModuleDto" />
+	<select id="getSonSystemModuleNameByCondition" parameterMap="putMap" resultType="java.lang.String">
+		SELECT T1.MODULE_NAME FROM T_SYSTEM_MODULE T1 INNER JOIN T_SYSTEM_MODULE T2 ON T1.PARENT_MODULE_ID = T2.ID
+		WHERE T2.MODULE_NAME = #{moduleName} AND T1.FLAG = #{flag} AND T1.STATUS = 'NORMAL'
+		ORDER BY T1.MODULE_NAME
+	</select>
+	<sql id="condition">
+		<if test="moduleName != null and moduleName != ''">
+			AND T1.MODULE_NAME = #{moduleName}
+		</if>
+		<if test="parentModuleId != null and parentModuleId != ''">
+			AND T1.PARENT_MODULE_ID = #{parentModuleId}
+		</if>
+		<if test="flag != null and flag != ''">
+			AND T1.FLAG = #{flag}
+		</if>
+		<if test="status != null and status != ''">
+			AND T1.STATUS = #{status}
+		</if>
+	</sql>
+	<select id="getByName" parameterType="java.lang.String" resultType="com.lynn.config.api.dto.SystemModuleDto">
+		SELECT T1.* FROM T_SYSTEM_MODULE T1
+		WHERE 1 =1
+		AND T1.MODULE_NAME = #{parentModuleName}
+	</select>
+
+	<select id="getSystemModuleByCondition" parameterMap="putMapDto" resultMap="getMapDto">
+		SELECT T1.*
+		,T2.PARENT_MODULE_NAME
+		FROM T_SYSTEM_MODULE T1
+		INNER JOIN(SELECT ID,MODULE_NAME as PARENT_MODULE_NAME FROM T_SYSTEM_MODULE) T2
+		ON T1.PARENT_MODULE_ID = T2.ID
+		WHERE 1 =1
+		<if test="moduleName != null and moduleName != ''">
+			AND T1.MODULE_NAME = #{moduleName}
+		</if>
+		<if test="parentModuleName != null and parentModuleName != ''">
+			AND T2.PARENT_MODULE_NAME = #{parentModuleName}
+		</if>
+		<if test="flag !=null and flag !=''">
+			AND T1.FLAG = #{flag}
+		</if>
+		<if test="status !=null and status !=''">
+			AND T1.STATUS = #{status}
+		</if>
+		AND T1.PARENT_MODULE_ID !=0
+		OR FLAG = 'ALL'
+	</select>
+
+	<select id="getSystemName" resultType="String">
+		SELECT MODULE_NAME FROM T_SYSTEM_MODULE
+		WHERE 1 =1
+		AND PARENT_MODULE_ID=0
+		GROUP BY MODULE_NAME
+	</select>
+	<select id="getSystemNameByPid" resultType="String">
+		SELECT MODULE_NAME FROM T_SYSTEM_MODULE
+		WHERE 1 =1
+		AND PARENT_MODULE_ID=#{parentModuleId}
+	</select>
+
+	<update id="updateStatus" parameterType="com.lynn.config.api.dto.SystemModuleDto">
+		UPDATE T_SYSTEM_MODULE
+		SET STATUS =#{status}
+		WHERE 1 =1
+		AND ID =#{id}
+	</update>
+
+	<select id="getAllSystems" parameterMap="putMap" resultMap="getMap">
+		SELECT * FROM T_SYSTEM_MODULE
+		WHERE PARENT_MODULE_ID = '0'
+		AND STATUS = 'NORMAL'
+	</select>
+
+	<select id="getAllSystemName" parameterMap="putMap" resultType="java.lang.String">
+		SELECT T.MODULE_NAME FROM T_SYSTEM_MODULE T
+		WHERE T.PARENT_MODULE_ID = '0'
+		AND T.STATUS = 'NORMAL'
+	</select>
+
+	<select id="getSystemModuleBySystemNameAndModuleName" resultMap="getMap" parameterType="java.lang.String">
+		SELECT T1.* FROM T_SYSTEM_MODULE T1 INNER JOIN T_SYSTEM_MODULE T2 ON T1.PARENT_MODULE_ID = T2.ID
+		WHERE T2.MODULE_NAME = #{0} AND T1.MODULE_NAME = #{1} AND T1.FLAG = #{2} AND T1.STATUS = 'NORMAL'
+	</select>
+
+	<select id="getMaxId" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT MAX(ID+0) FROM T_SYSTEM_MODULE
+		WHERE PARENT_MODULE_ID = #{parentModuleId}
+	</select>
+
+	<select id="getAllSystemNameNotModuleStatus" parameterType="com.lynn.config.api.constants.enums.ModuleStatus" resultType="java.lang.String">
+		SELECT T.MODULE_NAME FROM T_SYSTEM_MODULE T
+		WHERE T.FLAG <![CDATA[<>]]> #{0} AND T.PARENT_MODULE_ID = '0' 	AND T.STATUS = 'NORMAL'
+	</select>
+	
+	<select id="getParentId" parameterType="java.lang.String" resultType="com.lynn.config.api.dto.SystemModuleDto">
+		SELECT T1.* FROM T_SYSTEM_MODULE T1
+		WHERE 1 =1
+		AND T1.MODULE_NAME = #{parentModuleName}
+		AND T1.PARENT_MODULE_ID = '0'
+	</select>
+</mapper>
