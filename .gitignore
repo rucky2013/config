@@ -9,6 +9,6 @@ bin/
 customer.iml
 *.iml
 catalina.home_IS_UNDEFINED
-/mobanker-customer-parent/**/bin/
+/lynn-customer-parent/**/bin/
 atlassian-ide-plugin.xml
 classes
